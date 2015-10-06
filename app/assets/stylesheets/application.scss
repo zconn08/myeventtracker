@@ -1,0 +1,94 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+
+.event-card {
+  border: 2px solid black;
+  border-radius: 5px;
+  width: 300px;
+  height: 150px;
+  float: left;
+  background-color: #462066;
+  color: #FCF4D9;
+  text-align: center;
+  margin-left: 5px;
+  margin-bottom: 5px;
+  font-size: 16px;
+}
+
+.card-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #FF7A5A;
+}
+
+
+.glyphicon {
+  font-size: 28px;
+  float: left;
+}
+
+.glyphicon-remove {
+  float: right;
+  font-size: 20px;
+}
+
+.page-header {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.add-cards{
+  padding: 10px;
+  background-color: #FFB85F;
+}
+
+.errors {
+  height: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.num-input {
+    width: 45px;
+}
+
+body {
+  background-color: #8ED2C9;
+}
+
+.form-input {
+  margin-left: 5px;
+  margin-right: 15px;
+  padding: 0;
+  float: left;
+  height: 29px;
+}
+
+.form-wrapper {
+  width: 600px;
+  margin: 0 auto;
+}
+
+.ui-sortable-helper {
+  -ms-transform: rotate(4deg);
+  -moz-transform: rotate(4deg);
+  -webkit-transform: rotate(4deg);
+  transform: rotate(4deg);
+  z-index: 1000;
+  position: relative;
+}

@@ -1,24 +1,33 @@
-<!--
-<div><h2 class="title">How to win a car</h2>
+<h1 class="page-header">My Events</h1>
+<div class="add-cards">
+  <div class="form-wrapper">
+    <form>
+      <span class="glyphicon glyphicon-glass"></span><input type="text" name="events[occasion]" class="form-input" placeholder="Add event...">
+      <span class="glyphicon glyphicon-user"></span><input type="number" name="events[invited_count]" class="form-input num-input" min="1" value="1">
+      <span class="glyphicon glyphicon-calendar"></span><input type="date" class="form-input" name="events[date]">
+      <button class="btn-success">Create Event!</button>
+    </form>
+  </div>
+</div>
+<div class="errors">
 
+</div>
 
-<div class="board-body">
-<div class="lists ui-sortable"><div data-id="1" class="list ui-sortable-handle">  <h5>
-    Gamble in Vegas
-  </h5>
-
-  <button type="button" class="delete_list btn"
-          data-id=" 1"=""><span class="glyphicon glyphicon-remove"></span></button>
-
-
-  <div class="cards ui-sortable"><div data-id="1" class="card ui-sortable-handle">Play the tarzan slots
-
-<button type="button" class="delete_card btn" data-id="1"><span class="glyphicon glyphicon-remove"></span></button>
-</div><div data-id="2" class="card ui-sortable-handle">Do not buy souvenirs
-
-<button type="button" class="delete_card btn" data-id="2"><span class="glyphicon glyphicon-remove"></span></button>
-</div></div> -->
-
-<% events.forEach(function(event){ %>
-  <%= event.get("occasion") %>
-<%  }) %>
+<div class="cards">
+  <% events.forEach(function(event){ %>
+    <div class="event-card">
+      <span class="card-title"><%= event.get("occasion") %></span><span class="glyphicon glyphicon-remove" data-event-id="<%= event.get("id") %>"></span>
+      <br>
+      Attendees: <%= event.get("invited_count") %>
+      <br>
+      Date: <%= event.get("month") %>/<%= event.get("day") %>/<%= event.get("year") %>
+      <br>
+      <br>
+      <% if(event.get("cancelled")){ %>
+        Cancelled!
+      <% } else { %>
+        <button type="button" class="btn btn-danger" data-event-id="<%= event.get("id") %>">Cancel</button>
+      <% } %>
+    </div>
+  <%  }) %>
+</div>
