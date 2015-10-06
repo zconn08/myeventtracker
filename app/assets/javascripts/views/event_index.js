@@ -14,7 +14,11 @@ EventApp.Views.EventIndex = Backbone.View.extend({
 
   render: function(){
     this.$el.html(this.template({events: this.collection}));
-    this.$('.cards').sortable();
+    this.$('.cards').sortable({
+      stop: function(event, ui){
+        this.saveOrder();
+      }.bind(this)
+    });
     return this;
   },
 
@@ -25,10 +29,13 @@ EventApp.Views.EventIndex = Backbone.View.extend({
 
     var formData = this.$("form").serializeJSON();
     var dateInfo = formData.events.date.split("-");
+
     formData.events.year = dateInfo[0];
     formData.events.month = dateInfo[1];
     formData.events.day = dateInfo[2];
     formData.events.cancelled = "false";
+    formData.events.ord = this.collection.length + 1;
+
     delete formData.events["date"];
     var newEvent = new EventApp.Models.Event();
 
@@ -59,6 +66,19 @@ EventApp.Views.EventIndex = Backbone.View.extend({
     var model = this.collection.get(eventId);
     model.save({events: { cancelled:true}});
     this.collection.fetch();
+  },
+
+  saveOrder: function(){
+    var cards = this.$('.event-card');
+
+    for(var i = 0; i < cards.length; i++) {
+      var cardId = $(cards[i]).data("event-id");
+      var currentEvent = this.collection.get(cardId);
+      currentEvent.set({"ord" : i});
+      currentEvent.save({"events" : {"ord" : i}});
+    }
+    this.collection.sort();
+    this.render();
   },
 
 });

@@ -15,7 +15,7 @@
 
 <div class="cards">
   <% events.forEach(function(event){ %>
-    <div class="event-card">
+    <div class="event-card" data-event-id="<%= event.get("id") %>">
       <span class="card-title"><%= event.get("occasion") %></span><span class="glyphicon glyphicon-remove" data-event-id="<%= event.get("id") %>"></span>
       <br>
       Attendees: <%= event.get("invited_count") %>

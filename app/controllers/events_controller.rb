@@ -32,6 +32,6 @@ class EventsController < ApplicationController
 
   private
   def event_params
-    params.require(:events).permit(:occasion, :invited_count, :day, :month, :year, :cancelled)
+    params.require(:events).permit(:occasion, :invited_count, :day, :month, :year, :cancelled, :ord)
   end
 end
